@@ -2,6 +2,7 @@ const mongoose = require('mongoose');
 
 const blogSchema = mongoose.Schema({
     Username: { type: String, required: true },
+    Email: { type: String, required: true },
     Title: { type: String, required: true },
     Content: { type: String, required: true },
     Category: { type: String, required: true },
