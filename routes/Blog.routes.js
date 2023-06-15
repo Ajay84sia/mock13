@@ -6,7 +6,7 @@ const { BlogModel } = require("../model/Blog.model")
 const blogRouter = express.Router();
 
 blogRouter.get("/", async (req, res) => {
-    const { Username, Email } = req.body
+    const { Username, Avatar } = req.body
     try {
         const blogs = await BlogModel.find({ Username })
         res.status(200).send(blogs)
@@ -16,7 +16,7 @@ blogRouter.get("/", async (req, res) => {
 })
 
 blogRouter.post("/", async (req, res) => {
-    const { Username, Email, Title, Content, Category, Date, Likes, Comments } = req.body
+    const { Username, Avatar, Title, Content, Category, Date, Likes, Comments } = req.body
     try {
         const blog = new BlogModel({ Username, Email, Title, Content, Category, Date, Likes, Comments })
         await blog.save();
