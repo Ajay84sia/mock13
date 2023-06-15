@@ -16,11 +16,11 @@ app.get('/', (req, res) => {
     res.send("BASIC API ENDPOINT")
 })
 
-app.use("/user", userRouter)
+app.use("/", userRouter)
 
 app.use(auth)
 
-app.use("/blog", blogRouter)
+app.use("/blogs", blogRouter)
 
 
 

@@ -5,7 +5,17 @@ const { BlogModel } = require("../model/Blog.model")
 
 const blogRouter = express.Router();
 
-blogRouter.post("/add", async (req, res) => {
+blogRouter.get("/", async (req, res) => {
+    const { Username, Email } = req.body
+    try {
+        const blogs = await BlogModel.find({ Username })
+        res.status(200).send(blogs)
+    } catch (error) {
+        res.status(400).send({ "err": error.message })
+    }
+})
+
+blogRouter.post("/", async (req, res) => {
     const { Username, Title, Content, Category, Date, Likes, Comments } = req.body
     try {
         const blog = new BlogModel({ Username, Title, Content, Category, Date, Likes, Comments })
